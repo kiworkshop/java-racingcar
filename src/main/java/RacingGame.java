@@ -3,14 +3,15 @@ import java.util.*;
 public class RacingGame {
 
     public static int racingNum;
-    public static HashSet<String> winnerGroup;
-    public static HashMap<String, Integer> gameSnap;
+    public static HashSet<String> winnerGroup = new HashSet<>();
+    public static HashMap<String, Integer> gameSnap = new HashMap<>();
 
-    public static void main(String[] args) {
-
-        initVar();
+    public void init() {
         whoWannaJoin();
         howManyTry();
+    }
+
+    public void run() {
         tryGame();
         whoIsWinner();
     }
@@ -76,10 +77,4 @@ public class RacingGame {
         }
         System.out.println(winnerGroup + "가 최종 우승했습니다.");
     }
-
-    public static void initVar(){
-        winnerGroup = new HashSet<>();
-        gameSnap = new HashMap<>();
-    }
-
 }
