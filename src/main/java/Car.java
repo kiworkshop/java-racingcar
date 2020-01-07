@@ -1,8 +1,8 @@
 public class Car {
 
-    public static final double GO_FLOOR = 0.4;
-    public static final String DELIMITER_PRINT_POSITION = " : ";
-    public static final String PROGRESS_BAR = "-";
+    private static final double GO_FLOOR = 0.4;
+    private static final String DELIMITER_PRINT_POSITION = " : ";
+    private static final String PROGRESS_BAR = "-";
     private String name;
     private int position = 0;
 
@@ -14,10 +14,6 @@ public class Car {
         if (isOverGoFloor()) {
             position++;
         }
-    }
-
-    private boolean isOverGoFloor() {
-        return Math.random() >= GO_FLOOR;
     }
 
     public void printPostion() {
@@ -32,4 +28,7 @@ public class Car {
         return name;
     }
 
+    private boolean isOverGoFloor() {
+        return Math.random() >= GO_FLOOR;
+    }
 }
