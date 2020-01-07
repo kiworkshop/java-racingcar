@@ -1,5 +1,3 @@
-package main.java;
-
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -27,7 +25,7 @@ public class CarGame {
     }
 
     public void makeCars() {
-        Car[] cars = new Car[];
+        //Car[] cars = new Car[];
     }
 
     public void getRandomNumbers() {
