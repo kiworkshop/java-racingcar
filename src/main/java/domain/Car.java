@@ -9,16 +9,23 @@ public class Car {
     private int position;
 
     public Car(String name) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
         if (name.length() > CAR_NAME_MAX_LENGTH) {
             throw new IllegalArgumentException();
         }
         this.name = name;
     }
 
-    public void move(int number) {
+    public void moveForward(int number) {
         if (number >= CAR_MOVE_BASIS_NUMBER) {
             position++;
         }
+    }
+
+    public boolean inSamePositionWith(int position) {
+        return this.position == position;
     }
 
     public String getName() {
