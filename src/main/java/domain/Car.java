@@ -1,0 +1,24 @@
+package domain;
+
+public class Car {
+
+    private static final int CAR_NAME_MAX_LENGTH = 5;
+
+    private String name;
+    private int position;
+
+    public Car(String name) {
+        if (name.length() > CAR_NAME_MAX_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+}
