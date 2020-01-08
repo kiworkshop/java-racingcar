@@ -11,5 +11,4 @@ class SampleTest {
                 .contains("Lord")
                 .endsWith("Rings");
     }
-
-
+}
