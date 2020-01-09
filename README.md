@@ -11,5 +11,8 @@
     - ~~CarGameInfo 클래스 만들기~~
     - ~~CarGameInfo 생성자 초기화하기~~
 - ~~Car 클래스 만들기~~
+- ~~CarGame과 CarGameInfo 합치기~~
+- ~~Main에 getGameInfo 메서드 만들기~~
+    
 - 실행 결과 출력하기
 - 최종 우승자 출력하기 
