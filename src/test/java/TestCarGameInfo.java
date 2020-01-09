@@ -9,7 +9,7 @@ import java.io.InputStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CarGameInfoTest {
+public class TestCarGameInfo {
     private CarGame game;
 
     @BeforeEach
@@ -20,7 +20,7 @@ public class CarGameInfoTest {
     }
 
     @Test
-    public void testGetGameInfo() {
+    public void testGetGameInfoFields() {
         CarGame game = new CarGame();
         CarGameInfo gameInfo = game.getGameInfo();
 
@@ -36,10 +36,4 @@ public class CarGameInfoTest {
 //        assertEquals(gameInfo.getCarNames(), ["hyundai", "kia"]);
 //    }
 //
-    @Test
-    public void testCar() {
-
-    }
-
-
 }

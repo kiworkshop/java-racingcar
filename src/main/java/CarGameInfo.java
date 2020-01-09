@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class CarGameInfo {
-    private List<RacingCar> racingCars = new ArrayList<>();
-    private String carNames;
+    //private List<Car> Cars = new ArrayList<>();
+    private String carName;
     private int trialNumber;
 
     public CarGameInfo() {
