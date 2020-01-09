@@ -2,6 +2,8 @@ import java.util.Objects;
 
 public class CarName {
 
+  public static final String ERROR_NAME_LENGTH_EXCEEDED = "이름이 5자 넘었습니다.";
+
   private String carName;
 
   private CarName(String carName) {
@@ -15,8 +17,12 @@ public class CarName {
 
   private void validate(String carName) {
     if (carName.length() > 5) {
-      throw new IllegalArgumentException("이름이 5자 넘었습니다.");
+      throw new IllegalArgumentException(ERROR_NAME_LENGTH_EXCEEDED);
     }
+  }
+
+  public String getName() {
+    return carName;
   }
 
   @Override

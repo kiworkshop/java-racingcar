@@ -11,17 +11,10 @@ public class InputTest {
   void getCarNames_ValidInput_ValidOutput() {
     // given
     String names = "김지우,조광일,구미향";
-    CarName kim = CarName.of("김지우");
-    CarName cho = CarName.of("조광일");
-    CarName gu = CarName.of("구미향");
-
-    List<CarName> carNames = new ArrayList<>();
-    carNames.add(kim);
-    carNames.add(cho);
-    carNames.add(gu);
+    List<Car> cars = CarTest.getCarsFixture(names);
 
     // then
-    assertThat(Input.getCarNames(names)).isEqualTo(carNames);
+    assertThat(Input.getCars(names)).isEqualTo(cars);
   }
 
   @Test
@@ -30,7 +23,7 @@ public class InputTest {
     String names = "이름길이초과,조광일,구미향";
 
     // then
-    assertThatThrownBy(() -> Input.getCarNames(names)).isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> Input.getCars(names)).isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test

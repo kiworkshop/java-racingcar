@@ -7,18 +7,21 @@ import java.util.stream.Collectors;
 public class Input {
 
   public static final String DELIMITER = ",";
-  public static final Scanner sc = new Scanner(System.in);
+  public static final String MESSAGE_INPUT_CAR_NAMES = "경주할 자도차 이름을 입력하세요.(이름은 쉼표(,)를 기준으로 구분)";
+  public static final String MESSAGE_INPUT_ROUND = "시도할 회수는 몇회인가요?";
+
+  public static Scanner sc = new Scanner(System.in);
 
   public static InputData getInputData() {
-    List<CarName> carNames = getCarNames(getString());
-    List<Round> rounds = getRounds(getInt());
-    return InputData.of(carNames, rounds);
+    List<Car> cars = getCars(getInputNames());
+    List<Round> rounds = getRounds(getInputRound());
+    return InputData.of(cars, rounds);
   }
 
-  public static List<CarName> getCarNames(String names) {
+  public static List<Car> getCars(String names) {
     List<String> carNames = Arrays.asList(names.split(DELIMITER));
 
-    return carNames.stream().map(CarName::of).collect(Collectors.toList());
+    return carNames.stream().map(CarName::of).map(Car::with).collect(Collectors.toList());
   }
 
   public static List<Round> getRounds(int roundNum) {
@@ -30,11 +33,13 @@ public class Input {
     return rounds;
   }
 
-  public static String getString() {
+  public static String getInputNames() {
+    System.out.println(MESSAGE_INPUT_CAR_NAMES);
     return sc.nextLine();
   }
 
-  public static int getInt() {
+  public static int getInputRound() {
+    System.out.println(MESSAGE_INPUT_ROUND);
     return sc.nextInt();
   }
 }
