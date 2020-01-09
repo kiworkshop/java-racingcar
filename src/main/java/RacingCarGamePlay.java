@@ -26,7 +26,19 @@ public class RacingCarGamePlay {
         printResult(cars);
     }
 
-    private void printResult(List<Car> cars) {
+    public void printResult(List<Car> cars) {
+        System.out.print(String.join(DELIMITER_WINNER, getWinner(cars)) + MESSAGE_WINNING);
+    }
+
+    public List<Car> makeCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
+        }
+        return cars;
+    }
+
+    public ArrayList<String> getWinner(List<Car> cars) {
         int maxPosition = INITIAL_POSITION;
         ArrayList<String> winner = new ArrayList<>();
         for (Car car : cars) {
@@ -39,15 +51,6 @@ public class RacingCarGamePlay {
                 winner.add(car.getName());
             }
         }
-        System.out.print(String.join(DELIMITER_WINNER, winner) + MESSAGE_WINNING);
+        return winner;
     }
-
-    private List<Car> makeCars(String[] carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-        return cars;
-    }
-
 }

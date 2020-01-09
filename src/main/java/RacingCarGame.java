@@ -10,7 +10,7 @@ public class RacingCarGame {
 
     public static void main(String[] args) {
         printInputCarNameMessage();
-        String[] carNames = makeCarNames();
+        String[] carNames = makeCarNames(inputCarNames());
         printInputCountMessage();
         int raceCount = inputCount();
         RacingCarGamePlay racingCarGamePlay = new RacingCarGamePlay(carNames, raceCount);
@@ -18,8 +18,8 @@ public class RacingCarGame {
     }
 
 
-    private static String[] makeCarNames() {
-        return inputCarNames().split(DELEMITER_CARNAMES);
+    static String[] makeCarNames(String carNamesSerial) {
+        return carNamesSerial.split(DELEMITER_CARNAMES);
     }
 
      private static int inputCount() {

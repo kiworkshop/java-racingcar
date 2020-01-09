@@ -1,6 +1,6 @@
 public class Car {
 
-    private static final double GO_FLOOR = 0.4;
+    private static final double GO_THRESHOLD = 0.4;
     private static final String DELIMITER_PRINT_POSITION = " : ";
     private static final String PROGRESS_BAR = "-";
     private String name;
@@ -29,6 +29,6 @@ public class Car {
     }
 
     private boolean isOverGoFloor() {
-        return Math.random() >= GO_FLOOR;
+        return Math.random() >= GO_THRESHOLD;
     }
 }
