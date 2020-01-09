@@ -15,7 +15,7 @@ public class Car {
         if (name.length() > CAR_NAME_MAX_LENGTH) {
             throw new IllegalArgumentException();
         }
-        this.name = name;
+        this.name = name.trim();
     }
 
     public void moveForward(int number) {

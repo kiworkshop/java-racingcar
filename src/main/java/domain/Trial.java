@@ -6,20 +6,11 @@ public class Trial {
 
     private int trial;
 
-    public Trial(String numberString) {
-        int number = convertToInt(numberString);
+    public Trial(int number) {
         if (number < MINIMUM_TRIAL) {
             throw new IllegalArgumentException();
         }
         this.trial = number;
-    }
-
-    private int convertToInt(String numberString) {
-        try {
-            return Integer.parseInt(numberString);
-        } catch (NumberFormatException ne) {
-            throw new IllegalArgumentException();
-        }
     }
 
     public int getTrial() {
