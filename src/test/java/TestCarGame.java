@@ -5,6 +5,8 @@ import org.junit.jupiter.api.TestInstance;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -20,18 +22,19 @@ public class TestCarGame {
 
     @Test
     public void testGetGameConstructor() {
-        CarGame game = new CarGame("hyundai", 3);
+        List<String> carNames = Arrays.asList("hyundai");
+        CarGame game = new CarGame(carNames, 3);
 
-        assertEquals(game.getCarName(), "hyundai" );
+        assertEquals(game.getCarNames(), carNames );
         assertEquals(game.getTrialNumber(), 3 );
     }
 
-//    @Test
-//    public void testGetCarNames() {
-//        CarGame game = new CarGame();
-//        CarGameInfo gameInfo = game.getGameInfo();
-//
-//        assertEquals(gameInfo.getCarNames(), ["hyundai", "kia"]);
-//    }
-//
+    @Test
+    public void testGetCarNames() {
+        List<String> carNames = Arrays.asList("hyundai","kia");
+        CarGame game = new CarGame(carNames, 3);
+
+        assertEquals(game.getCarNames(), carNames);
+    }
+
 }
