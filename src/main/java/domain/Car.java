@@ -39,4 +39,16 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Car))
+            return false;
+        return ((Car) o).getName().equals(name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
 }
