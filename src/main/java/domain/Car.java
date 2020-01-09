@@ -28,6 +28,10 @@ public class Car {
         return this.position == position;
     }
 
+    public CarSnapShot getCarSnapShot() {
+        return new CarSnapShot(name, position);
+    }
+
     public String getName() {
         return name;
     }
