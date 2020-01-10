@@ -13,7 +13,7 @@ public class TestMain {
 
     @BeforeEach
     public void setUp() {
-        String input = "hyundai\r\n3";
+        String input = "hyundai,kia\r\n3";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
     }
@@ -21,11 +21,17 @@ public class TestMain {
     @Test
     public void testGetGameInfo() {
         CarGame game = main.getGameInfo();
-        List<String> carNames = Arrays.asList("hyundai");
+        game.prepareCars();
 
-        assertEquals(game.getCarNames(), carNames);
+        assertEquals(game.getCars().get(0).getName(), "hyundai");
         assertEquals(game.getTrialNumber(), 3);
 
 
+    }
+
+    @Test
+    public void testMain() {
+        main main = new main();
+        main.main();
     }
 }

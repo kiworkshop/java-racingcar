@@ -10,10 +10,14 @@ public class main {
         List<String> carNames = Arrays.asList(sc.nextLine().split(","));
         System.out.println("시도할 회수는 몇회인가요?");
         int trialNumber = sc.nextInt();
+        System.out.println("");
         return new CarGame(carNames, trialNumber);
     }
 
     public void main() {
-
+        CarGame game = getGameInfo();
+        game.prepareCars();
+        CarGameResult result = game.run();
+        game.printResult(result);
     }
 }

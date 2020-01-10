@@ -2,9 +2,16 @@ import java.util.Objects;
 
 public class Car {
     private String name;
-    private int progress;
+    private int progress = 0;
 
-    public Car() {
+    public Car() {}
+
+    public Car(String name) {
+        this.name = name;
+    }
+
+    public void forward() {
+        progress++;
     }
 
     @Override
@@ -34,5 +41,13 @@ public class Car {
 
     public void setProgress(int progress) {
         this.progress = progress;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "name='" + name + '\'' +
+                ", progress=" + progress +
+                '}';
     }
 }
