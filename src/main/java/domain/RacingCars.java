@@ -11,10 +11,10 @@ public class RacingCars {
 
     private List<Car> racingCars;
 
-    public RacingCars(List<Car> racingCars) {
-        validateSize(racingCars);
-        validateDuplication(racingCars);
-        this.racingCars = racingCars;
+    public RacingCars(List<Car> cars) {
+        validateSize(cars);
+        validateDuplication(cars);
+        this.racingCars = cars;
     }
 
     private void validateSize(List<Car> cars) {
