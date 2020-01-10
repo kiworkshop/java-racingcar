@@ -26,7 +26,7 @@ public class RacingCars {
     }
 
     private void validateSize(List<Car> cars) {
-        if (cars.size() < CARS_MINIMUM_SIZE)  {
+        if (cars.size() < CARS_MINIMUM_SIZE) {
             throw InvalidInputException.from(RACINGCARS_SIZE_EXCEPTION);
         }
     }
