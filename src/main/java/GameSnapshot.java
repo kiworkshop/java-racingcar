@@ -13,4 +13,8 @@ class GameSnapshot {
     }
     System.out.println();
   }
+
+  public List<CarResult> getCarResults() {
+    return carResults;
+  }
 }

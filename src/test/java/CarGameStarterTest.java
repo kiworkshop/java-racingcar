@@ -3,7 +3,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class CarGameStarterTest {
-
+    // TODO: 2020-01-11 indent 4->2로 모두 수정
     // TODO: 2020-01-10 Scanner input 받는 데에서 멈추는 현상 고려하여 테스트 수정
     @Test
     void getCarNamesFromUser_ValidInput_SaveToStarter() {

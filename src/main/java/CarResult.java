@@ -16,4 +16,12 @@ class CarResult {
     }
     System.out.println();
   }
+
+  public String getName() {
+    return name;
+  }
+
+  int getDistance() {
+    return distance;
+  }
 }
