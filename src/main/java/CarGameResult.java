@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class CarGameResult {
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> cars;
 
     public CarGameResult(List<Car> cars) {
         this.cars = cars;

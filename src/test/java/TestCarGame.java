@@ -56,4 +56,19 @@ public class TestCarGame {
         CarGameResult result3 = game.run();
         game.printResult(result3);
     }
+
+    @Test
+    public void testPrintWinner() {
+        CarGameResult result1 = new CarGameResult(game.getCars());
+        CarGameResult result2 = game.run();
+
+        game.printWinners(result2);
+    }
+
+    @Test
+    public void testGenerateRandomNumber() {
+        System.out.println(CarGame.generateRandomNumber());
+        System.out.println(CarGame.generateRandomNumber());
+        System.out.println(CarGame.generateRandomNumber());
+    }
 }

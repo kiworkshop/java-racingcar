@@ -19,5 +19,6 @@ public class main {
         game.prepareCars();
         CarGameResult result = game.run();
         game.printResult(result);
+        game.printWinners(result);
     }
 }

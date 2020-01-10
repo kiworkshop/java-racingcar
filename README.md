@@ -14,11 +14,12 @@
 - ~~CarGame과 CarGameInfo 합치기~~
 - ~~Main에 getGameInfo 메서드 만들기~~
     
-- 실행 결과 하나 출력하기
-    - Car 움직이기
-    - random숫자 만들기
+- ~~실행 결과 하나 출력하기~~
+    - ~~Car 움직이기~~
+    - ~~random number 만들기~~
     
 - 실행 결과 출력하기
     - ~~CarGame의 인스턴스 변수로 Cars 추가~~
     - CarGameResult 클래스 만들기
+    
 - 최종 우승자 출력하기 

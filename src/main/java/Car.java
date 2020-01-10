@@ -39,10 +39,6 @@ public class Car {
         this.name = name;
     }
 
-    public void setProgress(int progress) {
-        this.progress = progress;
-    }
-
     @Override
     public String toString() {
         return "Car{" +

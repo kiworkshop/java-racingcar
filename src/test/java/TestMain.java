@@ -25,8 +25,6 @@ public class TestMain {
 
         assertEquals(game.getCars().get(0).getName(), "hyundai");
         assertEquals(game.getTrialNumber(), 3);
-
-
     }
 
     @Test
