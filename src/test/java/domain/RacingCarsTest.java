@@ -15,7 +15,7 @@ public class RacingCarsTest {
     public static RacingCars getRacingCarsFixture() {
         List<Car> cars = getCarsFixture();
 
-        return new RacingCars(cars);
+        return RacingCars.from(cars);
     }
 
     @Test
@@ -24,22 +24,22 @@ public class RacingCarsTest {
         List<String> carNameList = getCarNameListFixture();
         List<Car> cars = getCarsFixture();
 
-        RacingCars racingCars = new RacingCars(cars);
+        RacingCars racingCars = RacingCars.from(cars);
         assertTrue(racingCars.size() == carNameList.size());
 
         List<String> duplicateCarNameList = new ArrayList<>(carNameList);
         duplicateCarNameList.add(carName);
-        List<Car> duplicateCarList = duplicateCarNameList.stream().map(Car::new).collect(Collectors.toList());
-        assertThrows(IllegalArgumentException.class, () -> new RacingCars(duplicateCarList));
+        List<Car> duplicateCarList = duplicateCarNameList.stream().map(Car::from).collect(Collectors.toList());
+        assertThrows(IllegalArgumentException.class, () -> RacingCars.from(duplicateCarList));
 
         List<String> aloneCarNameList = new ArrayList<>();
         aloneCarNameList.add(carName);
-        List<Car> aloneCarList = aloneCarNameList.stream().map(Car::new).collect(Collectors.toList());
-        assertThrows(IllegalArgumentException.class, () -> new RacingCars(aloneCarList));
+        List<Car> aloneCarList = aloneCarNameList.stream().map(Car::from).collect(Collectors.toList());
+        assertThrows(IllegalArgumentException.class, () -> RacingCars.from(aloneCarList));
     }
 
     private static List<Car> getCarsFixture() {
-        return getCarNameListFixture().stream().map(Car::new).collect(Collectors.toList());
+        return getCarNameListFixture().stream().map(Car::from).collect(Collectors.toList());
     }
 
     private static List<String> getCarNameListFixture() {

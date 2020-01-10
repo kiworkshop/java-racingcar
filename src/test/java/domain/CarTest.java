@@ -1,5 +1,6 @@
 package domain;
 
+import exception.InvalidInputException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -9,15 +10,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CarTest {
 
-    Car car = new Car("jaeju");
+    Car car = Car.from("jaeju");
 
     @Test
     void testCar() {
         assertNotNull(car.getName());
         assertNotNull(car.getPosition());
 
-        assertThrows(IllegalArgumentException.class, () -> new Car(""));
-        assertThrows(IllegalArgumentException.class, () -> new Car("overfive"));
+        assertThrows(InvalidInputException.class, () -> Car.from(""));
+        assertThrows(InvalidInputException.class, () -> Car.from("overfive"));
     }
 
     @Test
