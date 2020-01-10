@@ -9,14 +9,11 @@ public class TrialTest {
 
     @Test
     void generateTrialFromString() {
-        String number = "5";
-        String negativeNumber = "-5";
+        int number = 5;
+        int negativeNumber = -5;
 
-        Trial trial = new Trial(number);
+        Trial trial = Trial.from(number);
         assertTrue(trial.getTrial() == 5);
-        assertThrows(IllegalArgumentException.class, () -> new Trial(negativeNumber));
-
-        String notNumber = "재주";
-        assertThrows(IllegalArgumentException.class, () -> new Trial(notNumber));
+        assertThrows(IllegalArgumentException.class, () -> Trial.from(negativeNumber));
     }
 }

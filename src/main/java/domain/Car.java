@@ -1,19 +1,27 @@
 package domain;
 
+import exception.InvalidInputException;
+
 public class Car {
 
     private static final int CAR_NAME_MAX_LENGTH = 5;
     private static final int CAR_MOVE_BASIS_NUMBER = 4;
+    private static final String NOT_ALLOWED_EMPTY_CAR_NAME_EXCEPTION = "자동차 이름은 비어있을 수 없습니다.";
+    private static final String NOT_OVER_CAR_NAME_LIMIT_EXCEPTION = "자동차 이름은 " + CAR_NAME_MAX_LENGTH + "를 초과할 수 없습니다.";
 
     private String name;
     private int position;
 
-    public Car(String name) {
+    public static Car from(String name) {
+        return new Car(name);
+    }
+
+    private Car(String name) {
         if (name.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw InvalidInputException.from(NOT_ALLOWED_EMPTY_CAR_NAME_EXCEPTION);
         }
         if (name.length() > CAR_NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException();
+            throw InvalidInputException.from(NOT_OVER_CAR_NAME_LIMIT_EXCEPTION);
         }
         this.name = name.trim();
     }
@@ -29,7 +37,7 @@ public class Car {
     }
 
     public CarSnapShot getCarSnapShot() {
-        return new CarSnapShot(name, position);
+        return CarSnapShot.from(name, position);
     }
 
     public String getName() {
