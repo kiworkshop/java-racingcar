@@ -5,6 +5,5 @@ public class Main {
       CarGame carGame = gameStarter.startGame();
       GameResult result = carGame.play();
       result.printResults();
-
     }
 }

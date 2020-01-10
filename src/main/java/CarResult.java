@@ -1,17 +1,17 @@
 class CarResult {
   private String name;
   private int trialNum;
-  private int movement;
+  private int distance;
 
-  CarResult(String name, int trialNum, int movement) {
+  CarResult(String name, int trialNum, int distance) {
     this.name = name;
     this.trialNum = trialNum;
-    this.movement = movement;
+    this.distance = distance;
   }
 
-  void printMovement() {
+  void printDistance() {
     System.out.print(name + ":");
-    for (int i = 0; i < movement; i++) {
+    for (int i = 0; i < distance; i++) {
       System.out.print("-");
     }
     System.out.println();

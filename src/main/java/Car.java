@@ -1,7 +1,7 @@
 class Car {
   private String name;
   private int trialNum;
-  private int movement;
+  private int distance;
 
   Car(String name) {
     this.name = name;
@@ -10,9 +10,9 @@ class Car {
   CarResult move() {
     trialNum += 1;
     if (RandomGenerator.getNumber() > 3) {
-      movement += 1;
+      distance += 1;
     }
-    return new CarResult(name, trialNum, movement);
+    return new CarResult(name, trialNum, distance);
   }
 
   public String getName() {
@@ -23,7 +23,7 @@ class Car {
     return trialNum;
   }
 
-  public int getMovement() {
-    return movement;
+  public int getDistance() {
+    return distance;
   }
 }

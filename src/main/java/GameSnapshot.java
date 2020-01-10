@@ -9,7 +9,7 @@ class GameSnapshot {
 
   void printOneTrial() {
     for (CarResult carResult : carResults) {
-      carResult.printMovement();
+      carResult.printDistance();
     }
     System.out.println();
   }

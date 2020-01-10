@@ -10,10 +10,10 @@ class CarTest {
   void move_ValidInput_ValidOutput() {
     Car car = getCarFixture();
     int prevTrialNum = car.getTrialNum();
-    int prevMovement = car.getMovement();
+    int prevDistance = car.getDistance();
     car.move();
     assertThat(car.getTrialNum()).isEqualTo(prevTrialNum + 1);
-    assertThat(car.getMovement()).isBetween(prevMovement, prevMovement + 1);
+    assertThat(car.getDistance()).isBetween(prevDistance, prevDistance + 1);
   }
 
   static Car getCarFixture() {
