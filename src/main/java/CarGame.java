@@ -11,16 +11,18 @@ class CarGame {
   }
 
   GameResult play() {
+    List<GameSnapshot> snapshots = new ArrayList<>();
     for (int i = 0; i < trialNum; i++) {
-      runTrial(cars);
+      List<CarResult> carResults = runTrial(cars);
+      snapshots.add(new GameSnapshot(carResults));
     }
-    return new GameResult();
+    return new GameResult(snapshots);
   }
 
-  List<Car> runTrial(List<Car> cars) {
-    List<Car> carResults = new ArrayList<>();
+  List<CarResult> runTrial(List<Car> cars) {
+    List<CarResult> carResults = new ArrayList<>();
     for (Car car: cars) {
-      Car carResult = car.move();
+      CarResult carResult = car.move();
       carResults.add(carResult);
     }
     return carResults;

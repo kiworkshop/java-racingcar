@@ -15,7 +15,7 @@ public class CarGameTest {
   void runTrial_Cars_CarResults() {
     CarGame carGame = getCarGameFixture();
     int trialNum = 1;
-    List<Car> carResult = carGame.runTrial(CarTest.getCarsFixture(1));
+    List<CarResult> carResult = carGame.runTrial(CarTest.getCarsFixture(1));
     assertThat(carResult.get(0)).hasFieldOrPropertyWithValue("trialNum", trialNum);
   }
 

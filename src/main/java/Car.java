@@ -7,16 +7,12 @@ class Car {
     this.name = name;
   }
 
-  Car move() {
+  CarResult move() {
     trialNum += 1;
     if (RandomGenerator.getNumber() > 3) {
       movement += 1;
     }
-    return this;
-  }
-
-  void printMovement() {
-    System.out.println();
+    return new CarResult(name, trialNum, movement);
   }
 
   public String getName() {
