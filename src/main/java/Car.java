@@ -1,24 +1,33 @@
-public class Car {
-  public Car() {}
-  public Car(String name) {
+class Car {
+  private String name;
+  private int trialNum;
+  private int movement;
+
+  Car(String name) {
     this.name = name;
   }
 
-  private String name;
-  private String movement = "";
-  private int sumOfMovement;
-
-  public void move() {
-    double randomValue = Math.random();
-    int intValue = (int)(randomValue * 10);
-    if (intValue > 3) {
-      this.sumOfMovement += 1;
-      this.movement = this.movement + "-";
+  Car move() {
+    trialNum += 1;
+    if (RandomGenerator.getNumber() > 3) {
+      movement += 1;
     }
+    return this;
   }
 
-  public void showMovement() {
-    System.out.println(name + " : " + movement);
+  void printMovement() {
+    System.out.println();
   }
 
+  public String getName() {
+    return name;
+  }
+
+  public int getTrialNum() {
+    return trialNum;
+  }
+
+  public int getMovement() {
+    return movement;
+  }
 }
