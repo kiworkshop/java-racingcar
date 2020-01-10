@@ -13,7 +13,7 @@ public class TestMain {
 
     @BeforeEach
     public void setUp() {
-        String input = "hyundai,kia\r\n3";
+        String input = "hyundai,kia,bmw\r\n5";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
     }

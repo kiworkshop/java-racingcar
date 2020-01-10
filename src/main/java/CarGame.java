@@ -59,7 +59,13 @@ public class CarGame {
         }
         System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
     }
-    public void play(){}
+    public void play(CarGame game){
+        for(int i = 1; i <= trialNumber; i++) {
+            CarGameResult result = game.run();
+            game.printResult(result);
+            if (i== trialNumber) {game.printWinners(result);}
+        }
+    }
 
     public List<Car> getCars() {
         return cars;

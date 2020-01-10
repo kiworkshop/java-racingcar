@@ -17,8 +17,6 @@ public class main {
     public void main() {
         CarGame game = getGameInfo();
         game.prepareCars();
-        CarGameResult result = game.run();
-        game.printResult(result);
-        game.printWinners(result);
+        game.play(game);
     }
 }
