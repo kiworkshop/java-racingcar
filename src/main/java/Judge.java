@@ -12,6 +12,9 @@ class Judge {
         winners.add(carResult);
         furthestDistance = carResult.getDistance();
       }
+      if (furthestDistance == carResult.getDistance()) {
+        winners.add(carResult);
+      }
     }
     return winners;
   }
