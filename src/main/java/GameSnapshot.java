@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 import java.util.List;
 
 class GameSnapshot {
-  private List<CarResult> carResults;
+  private List<CarResult> carResults = new ArrayList<>();
 
   GameSnapshot(List<CarResult> carResults) {
     this.carResults = carResults;

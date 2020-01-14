@@ -3,7 +3,7 @@ import java.util.List;
 
 class CarGame {
   private int trialNum;
-  private List<Car> cars;
+  private List<Car> cars = new ArrayList<>();
 
   CarGame(int trialNum, List<Car> cars) {
     this.trialNum = trialNum;

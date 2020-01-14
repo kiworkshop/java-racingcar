@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 class CarGameStarter {
-  private List<String> carNames;
+  private List<String> carNames = new ArrayList<>();
   private int trialNum;
 
   CarGame startGame() {
