@@ -11,9 +11,10 @@ public class Round {
 
   private List<CarSnapShot> carSnapShots = new ArrayList<>();
 
-  public void proceed(List<Car> cars) {
+  public void proceed(List<Car> cars, ForwardStrategy forwardStrategy) {
+
     for (Car car: cars) {
-      car.go();
+      car.go(forwardStrategy);
       carSnapShots.add(car.getCarSnapShot());
     }
   }

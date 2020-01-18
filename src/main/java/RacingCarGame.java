@@ -4,9 +4,11 @@ public class RacingCarGame {
 
   public static final String MESSAGE_RESULT = "결과";
   public static final String LINE_CHANGE = " ";
+  public static final int THRESHOLD = 4;
 
   private List<Car> cars;
   private List<Round> rounds;
+  private ForwardStrategy randomStrategy = new RandomStrategy(THRESHOLD);
 
   private RacingCarGame(InputData inputData) {
     cars = inputData.getCars();
@@ -18,7 +20,7 @@ public class RacingCarGame {
   }
 
   public void run() {
-    rounds.forEach(round -> round.proceed(cars));
+    rounds.forEach(round -> round.proceed(cars, randomStrategy));
   }
 
   public void showResult() {

@@ -17,8 +17,8 @@ public class Car {
     return CarSnapShot.of(carName.getName(), position);
   }
 
-  public void go() {
-    if (RandomNumGenerator.isGreaterThanCriterion()) {
+  public void go(ForwardStrategy forwardStrategy) {
+    if (forwardStrategy.isForward()) {
       position++;
     }
   }
@@ -35,5 +35,9 @@ public class Car {
   @Override
   public int hashCode() {
     return Objects.hash(carName, position);
+  }
+
+  public int getPosition() {
+    return position;
   }
 }
