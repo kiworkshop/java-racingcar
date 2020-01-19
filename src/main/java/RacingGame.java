@@ -2,79 +2,94 @@ import java.util.*;
 
 public class RacingGame {
 
-    public static int racingNum;
-    public static HashSet<String> winnerGroup = new HashSet<>();
-    public static HashMap<String, Integer> gameSnap = new HashMap<>();
+    public static final int MINIMUM_RACING_NUMBER = 1;
+    private RacingCars racingCars = new RacingCars();
+    private int racingNum;
 
-    public void init() {
-        whoWannaJoin();
-        howManyTry();
+    RacingGame (int racingNum){
+//        initRacingCar();
+        validateNumber(racingNum);
+        this.racingNum = racingNum;
     }
 
-    public void run() {
-        tryGame();
-        whoIsWinner();
+    private void validateNumber(int racingNum) {
+        if (racingNum < MINIMUM_RACING_NUMBER) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public static void whoWannaJoin(){
+    private void initRacingCar(){
         System.out.println("경주할자동차이름을입력하세요(이름은쉼표(,)를기준으로구분).");
         Scanner scan = new Scanner(System.in);
         scan = new Scanner(scan.next()).useDelimiter(",");
         while(scan.hasNext()){
             String key = scan.next();
-            gameSnap.put(key, 0);
-
+            racingCars.add(new RacingCar(key));
         }
     }
 
-    public static void howManyTry(){
+    private void initTrial() {
         System.out.println("시도할회수는몇회인가요?");
         Scanner scan = new Scanner(System.in);
         racingNum = scan.nextInt();
     }
 
-    public static void tryGame(){
-        for(int i=0 ; i<racingNum; i++){
-            for(Map.Entry<String, Integer> entry : gameSnap.entrySet()){
-                if(runDice())
-                {
-                    gameSnap.put(entry.getKey(),entry.getValue()+1);
-                }
+    public void run() {
+        tryRacing();
+        showWinner();
+    }
+
+    private void showWinner() {
+        int winnerDist = 0;
+        List<String> winnerGroup = new ArrayList();
+        for(RacingCar racingCar : racingCars.getRacingCars()){
+            if(winnerDist < racingCar.getDistance()){
+                winnerDist = racingCar.getDistance();
+                winnerGroup.clear();
+                winnerGroup.add(racingCar.getName());
             }
-            printResult();
+            else if( winnerDist == racingCar.getDistance() )
+                winnerGroup.add(racingCar.getName());
+        }
+        System.out.println(winnerGroup + "가 최종 우승했습니다.");
+    }
+
+    private void tryRacing(){
+        for(int i=0 ; i<racingNum; i++){
+            oneLap();
         }
     }
 
-    public static boolean runDice(){
-        Random rand = new Random();
-        int randNum = rand.nextInt(10);
-        if(randNum >= 4){
-            return true;
+    private void oneLap() {
+        for(RacingCar racingCar : racingCars.getRacingCars()){
+            if(runDice())
+            {
+                racingCar.move();
+            }
         }
-        return false;
+        printOneLap();
     }
 
-    public static void printResult(){
+    private void printOneLap() {
         System.out.println("실행결과");
-        for(Map.Entry<String, Integer> entry : gameSnap.entrySet()){
-            System.out.print(entry.getKey() + " : ");
-            for(int i=0 ; i<entry.getValue() ; i++)
-                System.out.print("-");
-            System.out.println();
+        for(RacingCar racingCar : racingCars.getRacingCars())
+        {
+            printOneCar(racingCar);
         }
+    }
+
+    private void printOneCar(RacingCar racingCar) {
+        System.out.print(racingCar.getName() + " : ");
+        for(int i=0 ; i<racingCar.getDistance() ; i++)
+            System.out.print("-");
         System.out.println();
     }
 
-    public static void whoIsWinner(){
-        int winnerNum = 0;
-        for(Map.Entry<String, Integer> entry : gameSnap.entrySet()){
-            if(winnerNum < entry.getValue())
-                winnerNum = entry.getValue();
+    private boolean runDice(){
+        Random rand = new Random();
+        if(rand.nextInt(10) >= 4){
+            return true;
         }
-        for(Map.Entry<String, Integer> entry : gameSnap.entrySet()){
-            if(winnerNum == entry.getValue())
-                winnerGroup.add(entry.getKey());
-        }
-        System.out.println(winnerGroup + "가 최종 우승했습니다.");
+        return false;
     }
 }
