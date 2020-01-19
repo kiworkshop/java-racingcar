@@ -1,4 +1,5 @@
 public class RacingCar {
+    public static final int ONE_STEP = 1;
     private String name;
     private int distance;
 
@@ -17,5 +18,9 @@ public class RacingCar {
     public RacingCar(String name) {
         this.name = name;
         this.distance = 0;
+    }
+
+    public void move() {
+        distance += ONE_STEP;
     }
 }

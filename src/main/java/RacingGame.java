@@ -2,12 +2,30 @@ import java.util.*;
 
 public class RacingGame {
 
+    public static final int MINIMUM_RACING_NUMBER = 1;
     private RacingCars racingCars = new RacingCars();
     private int racingNum;
 
-    RacingGame (){
-        initRacingCar();
-        initTrial();
+    RacingGame (int racingNum){
+//        initRacingCar();
+        validateNumber(racingNum);
+        this.racingNum = racingNum;
+    }
+
+    private void validateNumber(int racingNum) {
+        if (racingNum < MINIMUM_RACING_NUMBER) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void initRacingCar(){
+        System.out.println("경주할자동차이름을입력하세요(이름은쉼표(,)를기준으로구분).");
+        Scanner scan = new Scanner(System.in);
+        scan = new Scanner(scan.next()).useDelimiter(",");
+        while(scan.hasNext()){
+            String key = scan.next();
+            racingCars.add(new RacingCar(key));
+        }
     }
 
     private void initTrial() {
@@ -36,16 +54,6 @@ public class RacingGame {
         System.out.println(winnerGroup + "가 최종 우승했습니다.");
     }
 
-    private void initRacingCar(){
-        System.out.println("경주할자동차이름을입력하세요(이름은쉼표(,)를기준으로구분).");
-        Scanner scan = new Scanner(System.in);
-        scan = new Scanner(scan.next()).useDelimiter(",");
-        while(scan.hasNext()){
-            String key = scan.next();
-            racingCars.add(new RacingCar(key));
-        }
-    }
-
     private void tryRacing(){
         for(int i=0 ; i<racingNum; i++){
             oneLap();
@@ -56,7 +64,7 @@ public class RacingGame {
         for(RacingCar racingCar : racingCars.getRacingCars()){
             if(runDice())
             {
-                racingCar.setDistance(racingCar.getDistance() + 1);
+                racingCar.move();
             }
         }
         printOneLap();
