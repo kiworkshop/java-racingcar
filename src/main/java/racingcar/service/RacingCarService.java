@@ -1,7 +1,9 @@
 package racingcar.service;
 
-import racingcar.domain.RacingCar;
-import racingcar.domain.RacingCars;
+import racingcar.domain.RacingCarGameResult;
+import racingcar.domain.car.RacingCar;
+import racingcar.domain.car.RacingCars;
+import racingcar.domain.proceedingstrategy.ProceedingStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,6 +24,10 @@ public class RacingCarService {
                 .map(String::trim)
                 .map(RacingCar::new)
                 .collect(Collectors.toList());
+    }
+
+    public RacingCarGameResult startRace(RacingCars racingCars, int round, ProceedingStrategy strategy) {
+
     }
 
     private String[] parseCarNames(String carNames) {

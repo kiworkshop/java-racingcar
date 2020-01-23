@@ -1,6 +1,9 @@
 package racingcar.controller;
 
-import racingcar.domain.RacingCars;
+import racingcar.domain.RacingCarGameResult;
+import racingcar.domain.car.RacingCars;
+import racingcar.domain.gameround.GameRound;
+import racingcar.domain.proceedingstrategy.RandomProceedingStrategy;
 import racingcar.service.RacingCarService;
 import racingcar.view.InputView;
 
@@ -16,6 +19,9 @@ public class RacingCarController {
         String carNames = inputView.getRacingCarNames();
         RacingCars racingCars = racingCarService.produceCarsWith(carNames);
 
-        int gameRound = inputView.getRacingCarGameRound();
+        int round = inputView.getRacingCarGameRound();
+
+        RacingCarGameResult result = racingCarService.startRace(racingCars, round, new RandomProceedingStrategy());
+
     }
 }

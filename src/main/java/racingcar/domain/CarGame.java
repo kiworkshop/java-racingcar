@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.domain.car.RacingCar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +25,7 @@ public class CarGame {
         }
     }
 
-    public CarGameResult run() {
+    public RacingCarGameResult run() {
         List<RacingCar> newCars = new ArrayList<>();
         for (RacingCar car : cars) {
             if (CarGame.generateRandomNumber() >= 4) {
@@ -31,10 +33,10 @@ public class CarGame {
             }
             newCars.add(car);
         }
-        return new CarGameResult(newCars);
+        return new RacingCarGameResult(newCars);
     }
 
-    public void printResult(CarGameResult result) {
+    public void printResult(RacingCarGameResult result) {
         List<RacingCar> cars = result.getCars();
         for (RacingCar car : cars) {
             String carName = car.getName();
@@ -44,7 +46,7 @@ public class CarGame {
         System.out.println("");
     }
 
-    public void printWinners(CarGameResult result) {
+    public void printWinners(RacingCarGameResult result) {
         List<RacingCar> cars = result.getCars();
         List<String> winners = new ArrayList<>();
         int maxProgress = 0;
@@ -64,7 +66,7 @@ public class CarGame {
     public void play(CarGame game) {
         System.out.println("실행 결과");
         for (int i = 1; i <= trialNumber; i++) {
-            CarGameResult result = run();
+            RacingCarGameResult result = run();
             printResult(result);
             if (i == trialNumber) {
                 game.printWinners(result);
