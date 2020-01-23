@@ -42,7 +42,7 @@
     
 - ~~실행 결과 출력하기~~
     - ~~CarGame의 인스턴스 변수로 Cars 추가~~
-    - ~~racingcar.CarGameResult 클래스 만들기~~
+    - ~~racingcar.domain.CarGameResult 클래스 만들기~~
     
 - ~~최종 우승자 출력하기~~
     - progress를 시각화하기 
