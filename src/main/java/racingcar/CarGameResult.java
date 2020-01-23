@@ -1,16 +1,18 @@
 package racingcar;
 
+import racingcar.domain.RacingCar;
+
 import java.util.List;
 import java.util.Objects;
 
 public class CarGameResult {
-    private List<Car> cars;
+    private List<RacingCar> cars;
 
-    public CarGameResult(List<Car> cars) {
+    public CarGameResult(List<RacingCar> cars) {
         this.cars = cars;
     }
 
-    public List<Car> getCars() {
+    public List<RacingCar> getCars() {
         return cars;
     }
 

@@ -1,11 +1,13 @@
 package racingcar;
 
+import racingcar.domain.RacingCar;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarGame {
     private List<String> carNames;
-    private List<Car> cars = new ArrayList<>();
+    private List<RacingCar> cars = new ArrayList<>();
     private int trialNumber;
 
     public CarGame(List<String> carNames, int trialNumber) {
@@ -19,13 +21,13 @@ public class CarGame {
 
     public void prepareCars() {
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            cars.add(new RacingCar(carName));
         }
     }
 
     public CarGameResult run() {
-        List<Car> newCars = new ArrayList<>();
-        for (Car car : cars) {
+        List<RacingCar> newCars = new ArrayList<>();
+        for (RacingCar car : cars) {
             if (CarGame.generateRandomNumber() >= 4) {
                 car.forward();
             }
@@ -35,8 +37,8 @@ public class CarGame {
     }
 
     public void printResult(CarGameResult result) {
-        List<Car> cars = result.getCars();
-        for (Car car : cars) {
+        List<RacingCar> cars = result.getCars();
+        for (RacingCar car : cars) {
             String carName = car.getName();
             int progress = car.getProgress();
             System.out.println(carName + " : " + progress);
@@ -45,10 +47,10 @@ public class CarGame {
     }
 
     public void printWinners(CarGameResult result) {
-        List<Car> cars = result.getCars();
+        List<RacingCar> cars = result.getCars();
         List<String> winners = new ArrayList<>();
         int maxProgress = 0;
-        for (Car car : cars) {
+        for (RacingCar car : cars) {
             if (maxProgress == car.getProgress()) {
                 winners.add(car.getName());
             }
@@ -72,7 +74,7 @@ public class CarGame {
         }
     }
 
-    public List<Car> getCars() {
+    public List<RacingCar> getCars() {
         return cars;
     }
 

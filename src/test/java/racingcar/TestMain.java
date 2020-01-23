@@ -19,7 +19,7 @@ public class TestMain {
 
     @Test
     public void testGetGameInfo() {
-        CarGame game = main.getGameInfo();
+        CarGame game = RacingCarGame.getGameInfo();
         game.prepareCars();
 
         assertEquals(game.getCars().get(0).getName(), "hyundai");

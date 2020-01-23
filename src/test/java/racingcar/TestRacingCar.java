@@ -1,23 +1,23 @@
 package racingcar;
 
 import org.junit.jupiter.api.Test;
-import racingcar.Car;
+import racingcar.domain.RacingCar;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestCar {
+public class TestRacingCar {
     @Test
     public void testCarExist() {
-        Car car = new Car();
+        RacingCar car = new RacingCar();
 
         assertNotNull(car);
     }
 
     @Test
     public void testEquality() {
-        Car car1 = new Car();
+        RacingCar car1 = new RacingCar();
         car1.setName("hyundai");
-        Car car2 = new Car();
+        RacingCar car2 = new RacingCar();
         car2.setName("hyundai");
 
         assertEquals(car1, car2);
@@ -25,7 +25,7 @@ public class TestCar {
 
     @Test
     public void testCarName() {
-        Car car = new Car();
+        RacingCar car = new RacingCar();
         car.setName("hyundai");
 
         assertEquals(car.getName(),"hyundai");

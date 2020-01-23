@@ -2,6 +2,7 @@ package racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.RacingCar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,7 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestCarGame {
+public class TestRacingCarGame {
     private CarGame game;
 
     @BeforeEach
@@ -21,9 +22,9 @@ public class TestCarGame {
 
     @Test
     public void testGetCars() {
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car("hyundai"));
-        cars.add(new Car("kia"));
+        List<RacingCar> cars = new ArrayList<>();
+        cars.add(new RacingCar("hyundai"));
+        cars.add(new RacingCar("kia"));
 
         assertEquals(game.getCars(), cars);
     }

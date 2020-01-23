@@ -1,15 +1,15 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
-public class Car {
+public class RacingCar {
     private String name;
     private int progress = 0;
 
-    public Car() {
+    public RacingCar() {
     }
 
-    public Car(String name) {
+    public RacingCar(String name) {
         this.name = name;
     }
 
@@ -21,7 +21,7 @@ public class Car {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
+        RacingCar car = (RacingCar) o;
         return Objects.equals(name, car.name);
     }
 
@@ -44,7 +44,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return "racingcar.Car{" +
+        return "racingcar.domain.Car{" +
                 "name='" + name + '\'' +
                 ", progress=" + progress +
                 '}';
