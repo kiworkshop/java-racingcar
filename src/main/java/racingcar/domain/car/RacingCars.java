@@ -1,5 +1,7 @@
 package racingcar.domain.car;
 
+import racingcar.domain.proceedingstrategy.ProceedingStrategy;
+
 import java.util.*;
 
 public class RacingCars {
@@ -16,6 +18,12 @@ public class RacingCars {
     public boolean hasDuplicatedNamesIn(List<RacingCar> cars) {
         Set<RacingCar> nameSet = new HashSet<>(cars);
         return cars.size() != nameSet.size();
+    }
+
+    public void moveForward(ProceedingStrategy strategy) {
+        for (RacingCar car : cars) {
+            car.moveForward(strategy);
+        }
     }
 
     @Override

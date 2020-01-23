@@ -1,5 +1,7 @@
 package racingcar.domain.car;
 
+import racingcar.domain.proceedingstrategy.ProceedingStrategy;
+
 import java.util.Objects;
 
 public class RacingCar {
@@ -21,8 +23,10 @@ public class RacingCar {
         return name.length() > CAR_NAME_MAX_LENGTH;
     }
 
-    public void forward() {
-        position++;
+    public void moveForward(ProceedingStrategy strategy) {
+        if(strategy.isProceedable()) {
+            position++;
+        }
     }
 
     public String getName() {

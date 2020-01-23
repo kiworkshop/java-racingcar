@@ -19,9 +19,9 @@ public class RacingCarController {
         String carNames = inputView.getRacingCarNames();
         RacingCars racingCars = racingCarService.produceCarsWith(carNames);
 
-        int round = inputView.getRacingCarGameRound();
+        int gameRound = inputView.getRacingCarGameRound();
 
-        RacingCarGameResult result = racingCarService.startRace(racingCars, round, new RandomProceedingStrategy());
+        RacingCarGameResult result = racingCarService.race(racingCars, gameRound, new RandomProceedingStrategy());
 
     }
 }

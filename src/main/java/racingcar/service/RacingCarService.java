@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import racingcar.domain.RacingCarGameHistory;
 import racingcar.domain.RacingCarGameResult;
 import racingcar.domain.car.RacingCar;
 import racingcar.domain.car.RacingCars;
@@ -26,8 +27,16 @@ public class RacingCarService {
                 .collect(Collectors.toList());
     }
 
-    public RacingCarGameResult startRace(RacingCars racingCars, int round, ProceedingStrategy strategy) {
+    public RacingCarGameResult race(RacingCars racingCars, int gameRound, ProceedingStrategy strategy) {
+        RacingCarGameResult result = new RacingCarGameResult();
 
+        for (int round = 1; round <= gameRound; round++) {
+            racingCars.moveForward(strategy);
+            RacingCarGameHistory history = new RacingCarGameHistory();
+            history.takeRacingCarSnapShot();
+            result.record(history);
+        }
+        return result;
     }
 
     private String[] parseCarNames(String carNames) {
