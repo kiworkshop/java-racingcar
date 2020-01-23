@@ -1,11 +1,10 @@
-import org.junit.jupiter.api.Assertions;
+package racingcar;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,11 +24,5 @@ public class TestMain {
 
         assertEquals(game.getCars().get(0).getName(), "hyundai");
         assertEquals(game.getTrialNumber(), 3);
-    }
-
-    @Test
-    public void testMain() {
-        main main = new main();
-        main.main();
     }
 }

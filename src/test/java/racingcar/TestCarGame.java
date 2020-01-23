@@ -1,22 +1,20 @@
-import org.junit.jupiter.api.BeforeAll;
+package racingcar;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestCarGame {
     private CarGame game;
 
     @BeforeEach
     public void setUp() {
-        List<String> carNames = Arrays.asList("hyundai","kia");
+        List<String> carNames = Arrays.asList("hyundai", "kia");
         this.game = new CarGame(carNames, 3);
         game.prepareCars();
     }

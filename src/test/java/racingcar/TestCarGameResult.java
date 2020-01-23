@@ -1,3 +1,5 @@
+package racingcar;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -20,6 +22,5 @@ public class TestCarGameResult {
 
         assertEquals(car1, car2);
     }
-
 
 }

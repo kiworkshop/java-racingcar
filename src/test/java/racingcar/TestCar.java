@@ -1,5 +1,7 @@
-import org.junit.jupiter.api.Assertions;
+package racingcar;
+
 import org.junit.jupiter.api.Test;
+import racingcar.Car;
 
 import static org.junit.jupiter.api.Assertions.*;
 
