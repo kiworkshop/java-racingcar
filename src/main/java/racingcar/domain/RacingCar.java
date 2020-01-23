@@ -3,18 +3,34 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class RacingCar {
-    private String name;
-    private int progress = 0;
 
-    public RacingCar() {
+    private static final int CAR_NAME_MAX_LENGTH = 5;
+
+    private final String name;
+    private int position = 0;
+
+    public RacingCar(final String name) {
+        this.name = name;
+
+        if(nameIsLongerThanMaxLength()) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public RacingCar(String name) {
-        this.name = name;
+    private boolean nameIsLongerThanMaxLength() {
+        return name.length() > CAR_NAME_MAX_LENGTH;
     }
 
     public void forward() {
-        progress++;
+        position++;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     @Override
@@ -30,23 +46,11 @@ public class RacingCar {
         return Objects.hash(name);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getProgress() {
-        return progress;
-    }
-
     @Override
     public String toString() {
         return "racingcar.domain.Car{" +
                 "name='" + name + '\'' +
-                ", progress=" + progress +
+                ", position=" + position +
                 '}';
     }
 }

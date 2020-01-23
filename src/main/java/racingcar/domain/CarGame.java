@@ -38,7 +38,7 @@ public class CarGame {
         List<RacingCar> cars = result.getCars();
         for (RacingCar car : cars) {
             String carName = car.getName();
-            int progress = car.getProgress();
+            int progress = car.getPosition();
             System.out.println(carName + " : " + progress);
         }
         System.out.println("");
@@ -49,11 +49,11 @@ public class CarGame {
         List<String> winners = new ArrayList<>();
         int maxProgress = 0;
         for (RacingCar car : cars) {
-            if (maxProgress == car.getProgress()) {
+            if (maxProgress == car.getPosition()) {
                 winners.add(car.getName());
             }
-            if (maxProgress < car.getProgress()) {
-                maxProgress = car.getProgress();
+            if (maxProgress < car.getPosition()) {
+                maxProgress = car.getPosition();
                 winners.clear();
                 winners.add(car.getName());
             }
