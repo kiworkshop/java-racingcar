@@ -3,6 +3,7 @@ package racingcar.domain.car;
 import racingcar.domain.proceedingstrategy.ProceedingStrategy;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class RacingCars {
 
@@ -24,6 +25,10 @@ public class RacingCars {
         for (RacingCar car : cars) {
             car.moveForward(strategy);
         }
+    }
+
+    public Stream<RacingCar> stream() {
+        return cars.stream();
     }
 
     @Override

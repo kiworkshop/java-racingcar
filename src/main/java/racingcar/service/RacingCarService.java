@@ -27,14 +27,14 @@ public class RacingCarService {
                 .collect(Collectors.toList());
     }
 
-    public RacingCarGameResult race(RacingCars racingCars, int gameRound, ProceedingStrategy strategy) {
+    public RacingCarGameResult race(RacingCars cars, int gameRound, ProceedingStrategy strategy) {
         RacingCarGameResult result = new RacingCarGameResult();
 
         for (int round = 1; round <= gameRound; round++) {
-            racingCars.moveForward(strategy);
+            cars.moveForward(strategy);
             RacingCarGameHistory history = new RacingCarGameHistory();
-            //history.takeSnapShot();
-            //result.record(history);
+            history.takeSnapshots(cars);
+            result.record(history);
         }
         return result;
     }
