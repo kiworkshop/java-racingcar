@@ -29,15 +29,15 @@ public class CarGame {
         List<RacingCar> newCars = new ArrayList<>();
         for (RacingCar car : cars) {
             if (CarGame.generateRandomNumber() >= 4) {
-                car.forward();
+                //car.forward();
             }
             newCars.add(car);
         }
-        return new RacingCarGameResult(newCars);
+        return new RacingCarGameResult();
     }
 
     public void printResult(RacingCarGameResult result) {
-        List<RacingCar> cars = result.getCars();
+        //List<RacingCar> cars = result.getCars();
         for (RacingCar car : cars) {
             String carName = car.getName();
             int progress = car.getPosition();
@@ -47,7 +47,7 @@ public class CarGame {
     }
 
     public void printWinners(RacingCarGameResult result) {
-        List<RacingCar> cars = result.getCars();
+        //List<RacingCar> cars = result.getCars();
         List<String> winners = new ArrayList<>();
         int maxProgress = 0;
         for (RacingCar car : cars) {

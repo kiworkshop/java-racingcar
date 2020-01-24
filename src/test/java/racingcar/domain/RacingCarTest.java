@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
 import racingcar.domain.car.RacingCar;
+import racingcar.domain.proceedingstrategy.ManualProceedingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
@@ -24,5 +25,18 @@ public class RacingCarTest {
         assertEquals("abcd", car1.getName());
         assertEquals("abcde", car2.getName());
         assertThat(thrown).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void 차가_잘_이동하는지_테스트() {
+        // given
+        RacingCar car = new RacingCar("lunar");
+
+        // when
+        car.moveForward(new ManualProceedingStrategy());
+        car.moveForward(new ManualProceedingStrategy());
+
+        // then
+        assertThat(car.getPosition()).isEqualTo(2);
     }
 }

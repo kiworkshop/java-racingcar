@@ -33,8 +33,8 @@ public class RacingCarService {
         for (int round = 1; round <= gameRound; round++) {
             racingCars.moveForward(strategy);
             RacingCarGameHistory history = new RacingCarGameHistory();
-            history.takeRacingCarSnapShot();
-            result.record(history);
+            //history.takeSnapShot();
+            //result.record(history);
         }
         return result;
     }
