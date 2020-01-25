@@ -10,4 +10,12 @@ public class RacingCarSnapShot {
         this.name = car.getName();
         this.position = car.getPosition();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
 }
