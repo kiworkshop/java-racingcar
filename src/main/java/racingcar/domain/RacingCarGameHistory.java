@@ -5,6 +5,7 @@ import racingcar.domain.car.RacingCars;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class RacingCarGameHistory {
 
@@ -20,5 +21,9 @@ public class RacingCarGameHistory {
 
     public int getNumberOfSnapShots() {
         return snapShots.size();
+    }
+
+    public Stream<RacingCarSnapShot> stream() {
+        return snapShots.stream();
     }
 }

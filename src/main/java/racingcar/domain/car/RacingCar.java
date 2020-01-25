@@ -9,7 +9,7 @@ public class RacingCar {
     private static final int CAR_NAME_MAX_LENGTH = 5;
 
     private final String name;
-    private int position = 0;
+    private int position = 1;
 
     public RacingCar(final String name) {
         this.name = name;

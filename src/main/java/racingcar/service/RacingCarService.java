@@ -27,19 +27,20 @@ public class RacingCarService {
                 .collect(Collectors.toList());
     }
 
-    public RacingCarGameResult race(RacingCars cars, int gameRound, ProceedingStrategy strategy) {
-        RacingCarGameResult result = new RacingCarGameResult();
+    private String[] parseCarNames(String carNames) {
+        return carNames.split(CAR_NAME_DELIMITER);
+    }
 
-        for (int round = 1; round <= gameRound; round++) {
+    public RacingCarGameResult race(RacingCars cars, int lastRound, ProceedingStrategy strategy) {
+        RacingCarGameResult result = new RacingCarGameResult();
+        result.recordInitialHistory(cars);
+
+        for (int round = 1; round <= lastRound; round++) {
             cars.moveForward(strategy);
             RacingCarGameHistory history = new RacingCarGameHistory();
             history.takeSnapshots(cars);
             result.record(history);
         }
         return result;
-    }
-
-    private String[] parseCarNames(String carNames) {
-        return carNames.split(CAR_NAME_DELIMITER);
     }
 }

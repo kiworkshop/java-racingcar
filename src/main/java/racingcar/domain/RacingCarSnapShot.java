@@ -3,6 +3,7 @@ package racingcar.domain;
 import racingcar.domain.car.RacingCar;
 
 public class RacingCarSnapShot {
+
     private final String name;
     private final int position;
 
