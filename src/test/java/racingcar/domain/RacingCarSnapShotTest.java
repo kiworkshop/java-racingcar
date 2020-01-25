@@ -6,11 +6,10 @@ import racingcar.domain.car.RacingCar;
 import racingcar.domain.proceedingstrategy.ManualProceedingStrategy;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RacingCarSnapShotTest {
 
-    RacingCar car;
+    private RacingCar car;
 
     @BeforeEach
     public void setUp() {

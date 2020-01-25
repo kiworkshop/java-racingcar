@@ -14,7 +14,11 @@ public class RacingCarGameHistory {
         cars.stream().forEach(car -> snapShots.add(takeSnapshot(car)));
     }
 
-    public RacingCarSnapShot takeSnapshot(RacingCar car) {
+    private RacingCarSnapShot takeSnapshot(RacingCar car) {
         return new RacingCarSnapShot(car);
+    }
+
+    public int getNumberOfSnapShots() {
+        return snapShots.size();
     }
 }

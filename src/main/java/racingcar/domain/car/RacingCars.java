@@ -16,7 +16,7 @@ public class RacingCars {
         this.cars = cars;
     }
 
-    public boolean hasDuplicatedNamesIn(List<RacingCar> cars) {
+    private boolean hasDuplicatedNamesIn(List<RacingCar> cars) {
         Set<RacingCar> nameSet = new HashSet<>(cars);
         return cars.size() != nameSet.size();
     }
@@ -29,6 +29,10 @@ public class RacingCars {
 
     public Stream<RacingCar> stream() {
         return cars.stream();
+    }
+
+    public int getNumberOfCars() {
+        return cars.size();
     }
 
     @Override
