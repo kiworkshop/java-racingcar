@@ -1,8 +1,13 @@
 package racingcar.view;
 
+import com.sun.deploy.util.StringUtils;
 import racingcar.domain.RacingCarGameHistory;
 import racingcar.domain.RacingCarGameResult;
 import racingcar.domain.RacingCarSnapShot;
+import racingcar.domain.car.RacingCar;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
@@ -44,6 +49,15 @@ public class OutputView {
 
     public void printWinners(final RacingCarGameResult result) {
         int lastRound = result.getLastRound();
-        //List<RacingCar> winners = result.findWinnersIn(lastRound);
+        List<RacingCarSnapShot> winners = result.findWinnersIn(lastRound);
+        System.out.println(convertWinnersToString(winners) + GAME_WINNER_MESSAGE);
+    }
+
+    private String convertWinnersToString(List<RacingCarSnapShot> winners) {
+        List<String> carNames = winners.stream()
+                .map(RacingCarSnapShot::getName)
+                .collect(Collectors.toList());
+
+        return StringUtils.join(carNames, WINNER_NAME_DELIMITER);
     }
 }

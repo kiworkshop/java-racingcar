@@ -26,4 +26,22 @@ public class RacingCarGameHistory {
     public Stream<RacingCarSnapShot> stream() {
         return snapShots.stream();
     }
+
+    public List<RacingCarSnapShot> findWinners() {
+        List<RacingCarSnapShot> winners = new ArrayList<>();
+
+        int maxPosition = 0;
+        for (RacingCarSnapShot snapShot : snapShots) {
+            if (snapShot.getPosition() == maxPosition) {
+                winners.add(snapShot);
+            }
+            if (snapShot.getPosition() > maxPosition) {
+                maxPosition = snapShot.getPosition();
+                winners.clear();
+                winners.add(snapShot);
+            }
+        }
+
+        return winners;
+    }
 }

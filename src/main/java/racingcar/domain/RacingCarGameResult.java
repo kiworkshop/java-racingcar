@@ -23,10 +23,20 @@ public class RacingCarGameResult {
     }
 
     public int getLastRound() {
-        return histories.size();
+        return histories.size() - 1;
     }
 
     public Stream<RacingCarGameHistory> stream() {
         return histories.stream();
+    }
+
+    public List<RacingCarSnapShot> findWinnersIn(int lastRound) {
+        RacingCarGameHistory history = getLastRoundHistory(lastRound);
+
+        return history.findWinners();
+    }
+
+    private RacingCarGameHistory getLastRoundHistory(int lastRound) {
+        return histories.get(lastRound);
     }
 }
