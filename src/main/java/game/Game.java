@@ -1,9 +1,9 @@
 package game;
 
-import domain.Car;
-import domain.RacingCars;
-import domain.RacingResult;
-import domain.Trial;
+import domain.car.Car;
+import domain.car.RacingCars;
+import domain.result.RacingResult;
+import domain.trial.Trial;
 import exception.InvalidInputException;
 
 import java.util.Arrays;

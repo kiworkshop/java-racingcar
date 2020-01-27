@@ -1,5 +1,6 @@
-package domain;
+package domain.car;
 
+import domain.car.Car;
 import exception.InvalidInputException;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,7 @@
-package domain;
+package domain.car;
 
+import domain.result.CarSnapShots;
+import domain.strategy.RandomNumberGenerator;
 import exception.InvalidInputException;
 
 import java.util.HashSet;

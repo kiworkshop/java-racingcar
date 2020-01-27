@@ -1,4 +1,4 @@
-package domain;
+package domain.result;
 
 import com.sun.deploy.util.StringUtils;
 

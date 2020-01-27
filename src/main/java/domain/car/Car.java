@@ -1,5 +1,6 @@
-package domain;
+package domain.car;
 
+import domain.result.CarSnapShot;
 import exception.InvalidInputException;
 
 public class Car {
