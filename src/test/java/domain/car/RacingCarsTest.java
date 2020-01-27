@@ -1,7 +1,5 @@
 package domain.car;
 
-import domain.car.Car;
-import domain.car.RacingCars;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

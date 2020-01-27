@@ -3,6 +3,8 @@ package game;
 import domain.car.Car;
 import domain.car.RacingCars;
 import domain.result.RacingResult;
+import domain.strategy.CarProceedStrategy;
+import domain.strategy.RandomCarProceedStrategy;
 import domain.trial.Trial;
 import exception.InvalidInputException;
 
@@ -14,6 +16,7 @@ public class Game {
 
     private static final String NOT_A_NUMBER_EXCEPTION = "시도 횟수는 숫자만 입력 가능합니다.";
     private static final String CAR_NAME_DELIMITER = ",";
+    private static final CarProceedStrategy strategy = new RandomCarProceedStrategy();
 
     public void play() {
         String namesFromUser = GameInputScanner.getCarNameFromUser();
@@ -56,7 +59,7 @@ public class Game {
     }
 
     private void runOneTurn(RacingCars racingCars) {
-        racingCars.runOneTurn();
+        racingCars.runOneTurn(strategy);
     }
 
     private void recordOneTurn(RacingResult racingResult, RacingCars racingCars) {

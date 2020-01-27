@@ -19,11 +19,11 @@ public class CarSnapShot {
         this.position = position;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    int getPosition() {
+    public int getPosition() {
         return position;
     }
 

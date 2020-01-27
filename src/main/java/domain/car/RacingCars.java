@@ -1,7 +1,7 @@
 package domain.car;
 
 import domain.result.CarSnapShots;
-import domain.strategy.RandomNumberGenerator;
+import domain.strategy.CarProceedStrategy;
 import exception.InvalidInputException;
 
 import java.util.HashSet;
@@ -40,8 +40,8 @@ public class RacingCars {
         }
     }
 
-    public void runOneTurn() {
-        racingCars.forEach(car -> car.moveForward(RandomNumberGenerator.generateNumber()));
+    public void runOneTurn(CarProceedStrategy strategy) {
+        racingCars.forEach(car -> car.moveForward(strategy));
     }
 
     public CarSnapShots getCarSnapShots() {
