@@ -10,7 +10,7 @@ public class CarSnapShot {
     private String name;
     private int position;
 
-    static CarSnapShot from(String name, int position) {
+    public static CarSnapShot from(String name, int position) {
         return new CarSnapShot(name, position);
     }
 

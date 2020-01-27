@@ -14,17 +14,18 @@ public class Car {
     private int position;
 
     public static Car from(String name) {
-        return new Car(name);
-    }
-
-    private Car(String name) {
+        name = name.trim();
         if (name.isEmpty()) {
             throw InvalidInputException.from(NOT_ALLOWED_EMPTY_CAR_NAME_EXCEPTION);
         }
         if (name.length() > CAR_NAME_MAX_LENGTH) {
             throw InvalidInputException.from(NOT_OVER_CAR_NAME_LIMIT_EXCEPTION);
         }
-        this.name = name.trim();
+        return new Car(name);
+    }
+
+    private Car(String name) {
+        this.name = name;
     }
 
     public void moveForward(int number) {
