@@ -1,26 +1,45 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Input {
-  private static final Scanner sc = new Scanner(System.in);
 
-  public static List<Car> getCars() {
-    List<Car> cars = new ArrayList<>();
+  public static final String DELIMITER = ",";
+  public static final String MESSAGE_INPUT_CAR_NAMES = "경주할 자도차 이름을 입력하세요.(이름은 쉼표(,)를 기준으로 구분)";
+  public static final String MESSAGE_INPUT_ROUND = "시도할 회수는 몇회인가요?";
 
-    System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분");
-    String input = sc.nextLine();
-    String[] carNames = input.split(",");
-    for(String carName: carNames) {
-      Car car = new Car(carName);
-      cars.add(car);
-    }
-    return cars;
+  public static Scanner sc = new Scanner(System.in);
+
+  public static InputData getInputData() {
+    List<Car> cars = getCars(getInputNames());
+    List<Round> rounds = getRounds(getInputRound());
+    return InputData.of(cars, rounds);
   }
 
-  public static Round getPlayRound() {
-    System.out.println("시도할 회수는 몇회인가요?");
-    int round = sc.nextInt();
-    return Round.of(round);
+  public static List<Car> getCars(String names) {
+    List<String> carNames = Arrays.asList(names.split(DELIMITER));
+
+    return carNames.stream().map(CarName::of).map(Car::with).collect(Collectors.toList());
+  }
+
+  public static List<Round> getRounds(int roundNum) {
+    List<Round> rounds = new ArrayList<>();
+    for (int i=0; i<roundNum; i++) {
+      Round round = new Round();
+      rounds.add(round);
+    }
+    return rounds;
+  }
+
+  public static String getInputNames() {
+    System.out.println(MESSAGE_INPUT_CAR_NAMES);
+    return sc.nextLine();
+  }
+
+  public static int getInputRound() {
+    System.out.println(MESSAGE_INPUT_ROUND);
+    return sc.nextInt();
   }
 }

@@ -1,22 +1,43 @@
-import java.util.List;
+import java.util.Objects;
 
 public class Car {
-  private String name;
-  private List<Integer> positions;
 
-  public Car(String name) {
-    this.name = name;
+  private CarName carName;
+  private int position;
+
+  private Car(CarName carName) {
+    this.carName = carName;
   }
 
-  public void updatePositions(List<Integer> positions) {
-    this.positions = positions;
+  public static Car with(CarName carName) {
+    return new Car(carName);
   }
 
-  public int getCurrentRoundPosition(int currentRound) {
-    return positions.get(currentRound);
+  public CarSnapShot getCarSnapShot() {
+    return CarSnapShot.of(carName.getName(), position);
   }
 
-  public String getName() {
-    return name;
+  public void go(ForwardStrategy forwardStrategy) {
+    if (forwardStrategy.isForward()) {
+      position++;
+    }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Car car = (Car) o;
+    return position == car.position &&
+        Objects.equals(carName, car.carName);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(carName, position);
+  }
+
+  public int getPosition() {
+    return position;
   }
 }
