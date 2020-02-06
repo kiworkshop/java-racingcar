@@ -11,14 +11,14 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RacingCarsTest {
+public class CarRacingTest {
 
     private List<String> carNameList;
 
-    public static RacingCars getRacingCarsFixture() {
+    public static CarRacing getRacingCarsFixture() {
         List<Car> cars = getCarsFixture();
 
-        return RacingCars.from(cars);
+        return CarRacing.from(cars);
     }
 
     @BeforeEach
@@ -30,8 +30,8 @@ public class RacingCarsTest {
     void generateRacingCarsFromString() {
         List<Car> cars = carNameList.stream().map(Car::from).collect(Collectors.toList());
 
-        RacingCars racingCars = RacingCars.from(cars);
-        assertTrue(racingCars.size() == carNameList.size());
+        CarRacing carRacing = CarRacing.from(cars);
+        assertTrue(carRacing.size() == carNameList.size());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class RacingCarsTest {
         duplicateCarNameList.add(carNameList.get(0));
 
         List<Car> duplicateCarList = duplicateCarNameList.stream().map(Car::from).collect(Collectors.toList());
-        assertThrows(IllegalArgumentException.class, () -> RacingCars.from(duplicateCarList));
+        assertThrows(IllegalArgumentException.class, () -> CarRacing.from(duplicateCarList));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class RacingCarsTest {
         List<String> aloneCarNameList = new ArrayList<>();
         aloneCarNameList.add(carNameList.get(0));
         List<Car> aloneCarList = aloneCarNameList.stream().map(Car::from).collect(Collectors.toList());
-        assertThrows(IllegalArgumentException.class, () -> RacingCars.from(aloneCarList));
+        assertThrows(IllegalArgumentException.class, () -> CarRacing.from(aloneCarList));
     }
 
     private static List<Car> getCarsFixture() {

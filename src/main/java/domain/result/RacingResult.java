@@ -16,19 +16,15 @@ public class RacingResult {
     }
 
     public void printResult() {
-        for (CarSnapShots carSnapShots : carSnapShotsList) {
-            System.out.println(String.format(FORMATTED_ROUND_STATEMENT, getRound(carSnapShots)));
-            carSnapShots.printCarSnapShots();
+        for (int i = 0; i < carSnapShotsList.size(); i++) {
+            System.out.println(String.format(FORMATTED_ROUND_STATEMENT, i + DIFFERENCE_BETWEEN_INDEX_ROUND));
+            carSnapShotsList.get(i).print();
             try {
                 Thread.sleep(INTERVAL_PRINT_TIME);
             } catch (InterruptedException ie) {
 
             }
         }
-    }
-
-    private int getRound(CarSnapShots carSnapShots) {
-        return carSnapShotsList.indexOf(carSnapShots) + DIFFERENCE_BETWEEN_INDEX_ROUND;
     }
 
     public void printWinners() {

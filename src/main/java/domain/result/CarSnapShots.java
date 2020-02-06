@@ -21,7 +21,7 @@ public class CarSnapShots {
         this.carSnapShots = carSnapShots;
     }
 
-    public void printCarSnapShots() {
+    public void print() {
         for (CarSnapShot carSnapShot : carSnapShots) {
             System.out.println(carSnapShot);
         }

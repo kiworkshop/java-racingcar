@@ -1,6 +1,5 @@
 package domain.car;
 
-import domain.result.CarSnapShot;
 import domain.strategy.CarProceedStrategy;
 import exception.InvalidInputException;
 
@@ -28,18 +27,15 @@ public class Car {
         this.name = name;
     }
 
-    public void moveForward(CarProceedStrategy strategy) {
+    public void moveOrNot(CarProceedStrategy strategy) {
         if (strategy.isAllowedToGo()) {
             position++;
+
         }
     }
 
     public boolean inSamePositionWith(int position) {
         return this.position == position;
-    }
-
-    public CarSnapShot getCarSnapShot() {
-        return CarSnapShot.from(name, position);
     }
 
     public String getName() {

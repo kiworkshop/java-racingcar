@@ -1,5 +1,6 @@
 package domain.result;
 
+import domain.car.Car;
 import util.StringUtils;
 
 public class CarSnapShot {
@@ -10,8 +11,8 @@ public class CarSnapShot {
     private String name;
     private int position;
 
-    public static CarSnapShot from(String name, int position) {
-        return new CarSnapShot(name, position);
+    public static CarSnapShot from(Car car) {
+        return new CarSnapShot(car.getName(), car.getPosition());
     }
 
     private CarSnapShot(String name, int position) {

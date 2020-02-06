@@ -1,7 +1,7 @@
 package game;
 
 import domain.car.Car;
-import domain.car.RacingCars;
+import domain.car.CarRacing;
 import domain.result.RacingResult;
 import domain.strategy.CarProceedStrategy;
 import domain.strategy.RandomCarProceedStrategy;
@@ -20,18 +20,18 @@ public class Game {
 
     public void play() {
         String namesFromUser = GameInputScanner.getCarNameFromUser();
-        RacingCars racingCars = generateRacingCarsFrom(namesFromUser);
+        CarRacing carRacing = generateRacingCarsFrom(namesFromUser);
         String trialFromUser = GameInputScanner.getTrial();
         Trial trial = generateTrialFrom(trialFromUser);
-        RacingResult racingResult = runGame(racingCars, trial);
+        RacingResult racingResult = runGame(carRacing, trial);
         racingResult.printResult();
         racingResult.printWinners();
     }
 
-    private RacingCars generateRacingCarsFrom(String input) {
+    private CarRacing generateRacingCarsFrom(String input) {
         List<String> carNames = Arrays.asList(input.split(CAR_NAME_DELIMITER));
         List<Car> cars = carNames.stream().map(Car::from).collect(Collectors.toList());
-        return RacingCars.from(cars);
+        return CarRacing.from(cars);
     }
 
     private Trial generateTrialFrom(String input) {
@@ -47,23 +47,23 @@ public class Game {
         }
     }
 
-    private RacingResult runGame(RacingCars racingCars, Trial trial) {
+    private RacingResult runGame(CarRacing carRacing, Trial trial) {
         RacingResult racingResult = new RacingResult();
 
         for (int i = 0; i < trial.getTrial(); i++) {
-            runOneTurn(racingCars);
-            recordOneTurn(racingResult, racingCars);
+            runOneTurn(carRacing);
+            recordOneTurn(racingResult, carRacing);
         }
 
         return racingResult;
     }
 
-    private void runOneTurn(RacingCars racingCars) {
-        racingCars.runOneTurn(strategy);
+    private void runOneTurn(CarRacing carRacing) {
+        carRacing.runOneTurn(strategy);
     }
 
-    private void recordOneTurn(RacingResult racingResult, RacingCars racingCars) {
-        racingResult.add(racingCars.getCarSnapShots());
+    private void recordOneTurn(RacingResult racingResult, CarRacing carRacing) {
+        racingResult.add(carRacing.getCarSnapShots());
     }
 
 }
