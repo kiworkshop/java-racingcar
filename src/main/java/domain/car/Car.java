@@ -54,7 +54,7 @@ public class Car {
     public boolean equals(Object o) {
         if (!(o instanceof Car))
             return false;
-        return ((Car) o).getName().equals(name);
+        return name.equals(((Car) o).getName());
     }
 
     @Override
