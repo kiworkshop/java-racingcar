@@ -1,15 +1,15 @@
-class CarResult {
+package racingCar.domain;
+
+public class CarResult {
   private String name;
-  private int trialNum;
   private int distance;
 
-  CarResult(String name, int trialNum, int distance) {
+  public CarResult(String name, int distance) {
     this.name = name;
-    this.trialNum = trialNum;
     this.distance = distance;
   }
 
-  void printDistance() {
+  public void printDistance() {
     System.out.print(name + ":");
     for (int i = 0; i < distance; i++) {
       System.out.print("-");

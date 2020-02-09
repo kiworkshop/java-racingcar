@@ -1,30 +1,36 @@
+package racingCar.domain;
+
 import java.util.ArrayList;
 import java.util.List;
 
-class CarGame {
+public class CarGame {
   private int trialNum;
   private List<Car> cars = new ArrayList<>();
 
-  CarGame(int trialNum, List<Car> cars) {
+  private CarGame(int trialNum, List<Car> cars) {
     this.trialNum = trialNum;
     this.cars = cars;
   }
 
-  GameResult play() {
+  public static CarGame of(int trialNum, List<Car> cars) {
+    return new CarGame(trialNum, cars);
+  }
+
+  public GameResult play() {
     List<GameSnapshot> snapshots = new ArrayList<>();
     for (int i = 0; i < trialNum; i++) {
-      List<CarResult> carResults = runTrial(cars);
-      snapshots.add(new GameSnapshot(carResults));
+      GameSnapshot carResults = runTrial(cars);
+      snapshots.add(carResults);
     }
     return new GameResult(snapshots);
   }
 
-  List<CarResult> runTrial(List<Car> cars) {
+  protected GameSnapshot runTrial(List<Car> cars) {
     List<CarResult> carResults = new ArrayList<>();
-    for (Car car: cars) {
+    for (Car car : cars) {
       CarResult carResult = car.move();
       carResults.add(carResult);
     }
-    return carResults;
+    return new GameSnapshot(carResults);
   }
 }

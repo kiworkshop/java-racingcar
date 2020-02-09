@@ -1,18 +1,22 @@
-class Car {
+package racingCar.domain;
+
+import racingCar.RandomGenerator;
+
+public class Car {
   private String name;
   private int trialNum;
   private int distance;
 
-  Car(String name) {
+  public Car(String name) {
     this.name = name;
   }
 
-  CarResult move() {
+  public CarResult move() {
     trialNum += 1;
     if (RandomGenerator.getNumber() > 3) {
       distance += 1;
     }
-    return new CarResult(name, trialNum, distance);
+    return new CarResult(name, distance);
   }
 
   public String getName() {
