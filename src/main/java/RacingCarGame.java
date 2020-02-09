@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ public class RacingCarGame {
 
     public static void main(String[] args) {
         printInputCarNameMessage();
-        String[] carNames = makeCarNames(inputCarNames());
+        List<String> carNames = makeCarNames(inputCarNames());
         printInputCountMessage();
         int raceCount = inputCount();
         RacingCarGamePlay racingCarGamePlay = new RacingCarGamePlay(carNames, raceCount);
@@ -18,8 +19,8 @@ public class RacingCarGame {
     }
 
 
-    static String[] makeCarNames(String carNamesSerial) {
-        return carNamesSerial.split(DELEMITER_CARNAMES);
+    static List<String> makeCarNames(String carNamesSerial) {
+        return Arrays.asList(carNamesSerial.split(DELEMITER_CARNAMES));
     }
 
      private static int inputCount() {
