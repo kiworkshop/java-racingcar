@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameSnapshot {
-  private List<CarResult> carResults = new ArrayList<>();
-  private List<CarResult> winners = new ArrayList<>();
+  private List<Car> carResults = new ArrayList<>();
+  private List<Car> winners = new ArrayList<>();
 
-  public GameSnapshot(List<CarResult> carResults) {
+  public GameSnapshot(List<Car> carResults) {
     this.carResults = carResults;
-    this.winners = pickWinners(carResults);
+    this.winners = pickWinners();
   }
 
-  private List<CarResult> pickWinners(List<CarResult> carResults) {
+  protected List<Car> pickWinners() {
     int furthestDistance = 0;
-    List<CarResult> winners = new ArrayList<>();
-    for (CarResult carResult : carResults) {
+    List<Car> winners = new ArrayList<>();
+    for (Car carResult : carResults) {
       if (furthestDistance < carResult.getDistance()) {
         winners.clear();
         winners.add(carResult);
@@ -30,14 +30,14 @@ public class GameSnapshot {
 
   public void printWinners() {
     System.out.print("우승자: ");
-    for (CarResult winner : winners) {
+    for (Car winner : winners) {
       System.out.print(winner.getName());
     }
     System.out.println();
   }
 
   public void printOneTrial() {
-    for (CarResult carResult : carResults) {
+    for (Car carResult : carResults) {
       carResult.printDistance();
     }
     System.out.println();

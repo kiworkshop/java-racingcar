@@ -1,9 +1,13 @@
+package racingCar.domain;
+
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+
+import racingCar.RandomGenerator;
 
 class CarTest {
 
@@ -18,7 +22,7 @@ class CarTest {
   }
 
   static Car getCarFixture() {
-    return new Car("car" + RandomGenerator.getNumber());
+    return new Car("racingCar" + RandomGenerator.getNumber());
   }
 
   static List<Car> getCarsFixture(int carNum) {

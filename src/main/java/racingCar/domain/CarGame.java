@@ -26,9 +26,9 @@ public class CarGame {
   }
 
   protected GameSnapshot runTrial(List<Car> cars) {
-    List<CarResult> carResults = new ArrayList<>();
+    List<Car> carResults = new ArrayList<>();
     for (Car car : cars) {
-      CarResult carResult = car.move();
+      Car carResult = car.move();
       carResults.add(carResult);
     }
     return new GameSnapshot(carResults);
