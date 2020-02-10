@@ -26,7 +26,7 @@ public class CarGameTest {
 
     assertThat(result.getSnapshots().get(0)).isNotEqualTo(new GameSnapshot(cars));
     assertThat(result.getSnapshots().get(0)).isNotEqualTo(result.getSnapshots().get(1));
-    assertThat(result.getSnapshots().get(0)).isEqualTo(new GameSnapshot(movedCars));
+    assertThat(cars).isEqualTo(movedCars);
   }
 
   CarGame getCarGameFixture() {
