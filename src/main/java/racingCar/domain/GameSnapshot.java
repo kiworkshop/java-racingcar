@@ -2,6 +2,7 @@ package racingCar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GameSnapshot {
   private List<Car> carResults = new ArrayList<>();
@@ -41,5 +42,22 @@ public class GameSnapshot {
       carResult.printDistance();
     }
     System.out.println();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    GameSnapshot that = (GameSnapshot) o;
+    return Objects.equals(carResults, that.carResults);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(carResults);
   }
 }

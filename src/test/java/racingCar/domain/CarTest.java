@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import racingCar.RandomGenerator;
+import racingCar.strategy.ManualMoveStrategy;
 
 class CarTest {
 
@@ -16,9 +17,9 @@ class CarTest {
     Car car = getCarFixture();
     int prevTrialNum = car.getTrialNum();
     int prevDistance = car.getDistance();
-    car.move();
+    car.move(new ManualMoveStrategy(true));
     assertThat(car.getTrialNum()).isEqualTo(prevTrialNum + 1);
-    assertThat(car.getDistance()).isBetween(prevDistance, prevDistance + 1);
+    assertThat(car.getDistance()).isEqualTo(prevDistance + 1);
   }
 
   static Car getCarFixture() {

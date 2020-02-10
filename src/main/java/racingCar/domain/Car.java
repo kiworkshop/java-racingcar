@@ -1,12 +1,13 @@
 package racingCar.domain;
 
-import racingCar.RandomGenerator;
+import java.util.Objects;
+
+import racingCar.strategy.MoveStrategy;
 
 public class Car {
   private String name;
   private int trialNum;
   private int distance;
-  private static final int MOVE_CRITERIA = 3;
 
   public Car(String name) {
     this.name = name;
@@ -17,9 +18,9 @@ public class Car {
     this.distance = distance;
   }
 
-  public Car move() {
+  public Car move(MoveStrategy moveStrategy) {
     trialNum += 1;
-    if (RandomGenerator.getNumber() > MOVE_CRITERIA) {
+    if (moveStrategy.isMovable()) {
       distance += 1;
     }
     return new Car(name, distance);
@@ -43,5 +44,22 @@ public class Car {
 
   public int getDistance() {
     return distance;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Car car = (Car) o;
+    return Objects.equals(distance, car.distance);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(distance);
   }
 }
