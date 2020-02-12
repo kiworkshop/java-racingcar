@@ -1,7 +1,12 @@
 package game;
 
-import domain.Car;
-import domain.TrialTime;
+import domain.car.Car;
+import domain.car.CarRacing;
+import domain.result.RacingResult;
+import domain.strategy.CarProceedStrategy;
+import domain.strategy.RandomCarProceedStrategy;
+import domain.trial.Trial;
+import exception.InvalidInputException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,61 +14,56 @@ import java.util.stream.Collectors;
 
 public class Game {
 
+    private static final String NOT_A_NUMBER_EXCEPTION = "시도 횟수는 숫자만 입력 가능합니다.";
+    private static final String CAR_NAME_DELIMITER = ",";
+    private static final CarProceedStrategy strategy = new RandomCarProceedStrategy();
+
     public void play() {
-        GameScanner gameScanner = new GameScanner();
-        List<Car> cars = generateCars(gameScanner);
-        TrialTime trialTime = generateTrialTimes(gameScanner);
-        runGame(cars, trialTime);
-        showResult(cars);
+        String namesFromUser = GameInputScanner.getCarNameFromUser();
+        CarRacing carRacing = generateRacingCarsFrom(namesFromUser);
+        String trialFromUser = GameInputScanner.getTrial();
+        Trial trial = generateTrialFrom(trialFromUser);
+        RacingResult racingResult = runGame(carRacing, trial);
+        racingResult.printResult();
+        racingResult.printWinners();
     }
 
-    private List<Car> generateCars(GameScanner gameScanner) {
-        String namesFromUser = gameScanner.requestNames();
-        List<String> names = Arrays.asList(namesFromUser.split(","));
-        return names.stream().map(Car::new).collect(Collectors.toList());
+    private CarRacing generateRacingCarsFrom(String input) {
+        List<String> carNames = Arrays.asList(input.split(CAR_NAME_DELIMITER));
+        List<Car> cars = carNames.stream().map(Car::from).collect(Collectors.toList());
+        return CarRacing.from(cars);
     }
 
-    private TrialTime generateTrialTimes(GameScanner gameScanner) {
-        int trialTimes = gameScanner.requestTrialTimes();
-        return new TrialTime(trialTimes);
+    private Trial generateTrialFrom(String input) {
+        int trial = convertToIntFrom(input);
+        return Trial.from(trial);
     }
 
-    private void runGame(List<Car> cars, TrialTime trialTime) {
-        for (int i = 0; i < trialTime.getTrialTime(); i++) {
-            runOneTime(cars);
+    private int convertToIntFrom(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException ne) {
+            throw InvalidInputException.from(NOT_A_NUMBER_EXCEPTION);
         }
     }
 
-    private void runOneTime(List<Car> cars) {
-        cars.forEach(Car::goOrStop);
-        for (Car car : cars) {
-            System.out.println(car);
+    private RacingResult runGame(CarRacing carRacing, Trial trial) {
+        RacingResult racingResult = new RacingResult();
+
+        for (int i = 0; i < trial.getTrial(); i++) {
+            runOneTurn(carRacing);
+            recordOneTurn(racingResult, carRacing);
         }
-        System.out.println();
+
+        return racingResult;
     }
 
-    private void showResult(List<Car> cars) {
-        List<String> carNames = getFirstCars(cars);
-        StringBuilder result = new StringBuilder();
-        for (String carName : carNames) {
-            result.append(carName + ", ");
-        }
-        System.out.println(result.toString() + "가 최종 우승하셨습니다.");
+    private void runOneTurn(CarRacing carRacing) {
+        carRacing.runOneTurn(strategy);
     }
 
-    private List<String> getFirstCars(List<Car> cars) {
-        int highScore = getHighScore(cars);
-        return cars.stream().filter(car -> car.getPosition() == highScore)
-                .map(car -> car.getName()).collect(Collectors.toList());
+    private void recordOneTurn(RacingResult racingResult, CarRacing carRacing) {
+        racingResult.add(carRacing.getCarSnapShots());
     }
 
-    private int getHighScore(List<Car> cars) {
-        int highScore = 0;
-        for (Car car : cars) {
-            if (car.getPosition() > highScore) {
-                highScore = car.getPosition();
-            }
-        }
-        return highScore;
-    }
 }
